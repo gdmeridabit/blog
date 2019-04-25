@@ -1,9 +1,8 @@
 <?php
 
-//include 'vendor/autoload.php';
 namespace App\Http\Controllers\Auth;
 
-use App\Users;
+use App\User;
 use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -24,8 +23,7 @@ class RegistrationController extends Controller
 
     public function index()
     {
-        $users = Users::all();
-        return view('registration', ['users' => $users]);
+        return view('registration');
     }
 
     /**
@@ -39,7 +37,7 @@ class RegistrationController extends Controller
 
         $this->validateForm($request);
 
-        $user = new Users;
+        $user = new User;
 
         if ($files = $request->file('fileToUpload')) {
             $name = $request->username . date("Ymdhis");
