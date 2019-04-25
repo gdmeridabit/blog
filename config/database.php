@@ -37,15 +37,15 @@ return [
 
         'mysql' => [
             'read' => [
-                'host' => '127.0.0.1',
+                'host' => env('DB_HOST'),
             ],
             'write' => [
-                'host' => '127.0.0.1'
+                'host' => env('DB_HOST'),
             ],
-            'driver'    => 'mysql',
-            'database'  => 'blog',
-            'username'  => 'root',
-            'password'  => '',
+            'driver'    => env('DB_CONNECTION'),
+            'database'  => env('DB_DATABASE'),
+            'username'  => env('DB_USERNAME'),
+            'password'  => env('DB_PASSWORD'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

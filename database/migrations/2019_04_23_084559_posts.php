@@ -18,7 +18,7 @@ class Posts extends Migration
             $table->bigInteger('user_id',false,true);
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->string('post');
             $table->string('url');
             $table->timestamp('updated_at');
