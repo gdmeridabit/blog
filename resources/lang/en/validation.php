@@ -128,8 +128,33 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'username' => [
+            'required' => 'Please enter :attribute',
+            'max' => 'Exceeds character limit of 20.',
+            'alpha_num' => 'Invalid characters, alphanumeric characters only.',
+        ],
+        'password' => [
+            'required' => 'Please enter :attribute',
+            'max' => 'Exceeds character limit of 20.',
+            'alpha_num' => 'Invalid characters, alphanumeric characters only.',
+        ],
+        'email' => [
+            'required' => 'Please enter :attribute',
+            'max' => 'Exceeds character limit of 50.',
+            'email' => 'Invalid characters, alphanumeric characters only.',
+        ],
+        'password' => [
+            'required' => 'Please enter :attribute',
+            'max' => 'Exceeds character limit of 20.',
+            'min' => 'Password should have a minimum of 8 characters.',
+            'alpha_num' => 'Invalid characters, alphanumeric characters only.',
+        ],
+        'description' => [
+            'max' => 'Exceeds character limit of 160.',
+        ],
+        'fileToUpload' => [
+            'max' => 'Exceeds file limit of 10MB.',
+            'image' => 'Please upload a jpg or png image.'
         ],
     ],
 

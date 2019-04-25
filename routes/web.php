@@ -11,17 +11,12 @@
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/registration', 'blog\RegistrationController@index');
-Route::post('/register', 'blog\RegistrationController@register');
+Route::get('/registration', 'auth\RegistrationController@index');
+Route::post('/register', 'auth\RegistrationController@register');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
