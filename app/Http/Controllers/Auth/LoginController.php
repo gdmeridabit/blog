@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -31,11 +34,17 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Set login from email to username
+     */
     public function username()
     {
         return 'username';
     }
 
+    /**
+     * Where to redirect users after logout.
+     */
     public function logout() {
         Auth::logout();
         return redirect()->route('login'); // redirect the user to the login screen
@@ -45,6 +54,7 @@ class LoginController extends Controller
      * Where to redirect users after login.
      *
      * @var string
+     * @return string
      */
     protected function redirectTo()
     {
@@ -53,5 +63,20 @@ class LoginController extends Controller
             return '/admin';
         }
         return '/home';
+    }
+
+    /**
+     * Login validation
+     *
+     * @param Request $request
+     * @throws ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            // new rules here
+        ]);
     }
 }

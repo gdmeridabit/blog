@@ -12,6 +12,7 @@
 */
 
 Auth::routes();
+Auth::routes(['verify' => false, 'register' => false]);
 Route::get('/', function () {
     return view('base');
 });

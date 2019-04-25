@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use DB;
 use App\Http\Controllers\Controller;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
-use IPFSPHP\IPFS;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Hash;
 class RegistrationController extends Controller
 {
 
-    protected $ipfs;
-
-    public function __construct()
-    {
-        $this->ipfs = new IPFS('127.0.0.1', 8080, 5001);
-    }
-
+    /**
+     * Create a new user instance.
+     *
+     * @return void
+     */
     public function index()
     {
         return view('registration');
@@ -30,7 +28,7 @@ class RegistrationController extends Controller
      * Create a new user instance.
      *
      * @param Request $request
-     * @return Response
+     * @return void
      */
     public function register(Request $request)
     {
@@ -70,6 +68,12 @@ class RegistrationController extends Controller
         }
     }
 
+    /**
+     * Create a new user instance.
+     *
+     * @param Request $request
+     * @return ValidationException
+     */
     public function validateForm(Request $request)
     {
         $validatedData = $request->validate([

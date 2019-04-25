@@ -14,8 +14,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light justify-content-between bg-warning">
-    <a class="navbar-brand mx-auto" href="/">Blogger</a>
+<nav class="navbar navbar-expand-lg navbar-light justify-content-between bg-primary">
+    <a class="navbar-brand mx-auto text-white" href="/">Blogger</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,14 +32,14 @@
         <ul class="navbar-nav ml-auto">
             @auth
             <li class="nav-item mr-3">
-                <a class="nav-link" href="logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a class="nav-link text-white" href="logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </li>
             @else
             <li class="nav-item mr-3">
-                <a class="nav-link" href="login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                <a class="nav-link text-white" href="login"><i class="fas fa-sign-in-alt"></i>Login</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-outline-primary" href="registration">Register</a>
+                <a class="btn btn-outline-primary text-white" href="registration">Register</a>
             </li>
             @endif
         </ul>
