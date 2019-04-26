@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mt-3">
     <div><h2 class="display-4">Registration</h2></div>
 </div>
 <div class="d-flex justify-content-center">
@@ -24,7 +24,7 @@
     </div>
 </div>
 @endif
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center px-2">
     <form action="/register" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="form-group">

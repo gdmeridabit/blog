@@ -16,12 +16,18 @@ class AdminHomeController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');
-        return Auth::user();
     }
 
     public function index()
     {
         $user = Auth::user();
-        return view('adminHome',['users' => $user]);
+
+        if($user->display_picture == 0) {
+            $display_pic = asset('storage/user.png');
+        } else {
+            $display_pic = asset('storage/files/' . $user->display_picture);
+        }
+
+        return view('adminHome',['user' => $user, 'dp' => $display_pic]);
     }
 }

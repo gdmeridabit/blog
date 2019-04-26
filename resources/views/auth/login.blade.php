@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="d-md-flex justify-content-center mt-5">
-        <div><h2 class="display-4">Welcome to Blogger!!</h2></div>
+    <div class="d-flex justify-content-center text-center mt-5">
+        <h2 class="display-4">Welcome to Blogger!!</h2>
     </div>
-    <div class="d-md-flex justify-content-center">
-        <div class="p-2"><h5>Write and share your blog now!!</h5></div>
+    <div class="d-flex justify-content-center">
+        <h5>Write and share your blog now!!</h5>
     </div>
-    <div class="d-md-flex justify-content-center mt-5 py-5 bg-primary">
+    <div class="d-flex justify-content-center mt-5 py-5 bg-primary">
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

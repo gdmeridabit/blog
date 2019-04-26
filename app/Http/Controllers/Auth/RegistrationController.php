@@ -21,7 +21,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('registration');
+        return view('auth/registration');
     }
 
     /**
@@ -40,9 +40,9 @@ class RegistrationController extends Controller
         if ($files = $request->file('fileToUpload')) {
             $name = $request->username . date("Ymdhis");
             Storage::disk('local')->putFileAs(
-                'files/' . $name,
+                'public/files/',
                 $files,
-                $name
+                $name . $files->getClientOriginalExtension()
             );
         }
 
