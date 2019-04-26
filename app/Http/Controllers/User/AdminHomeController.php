@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use DB;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use IPFSPHP\IPFS;
@@ -28,6 +29,18 @@ class AdminHomeController extends Controller {
             $display_pic = asset('storage/files/' . $user->display_picture);
         }
 
-        return view('adminHome',['user' => $user, 'dp' => $display_pic]);
+        $users = DB::table('users')->where('is_admin', 0)->paginate(10);
+
+        return view('adminHome',['user' => $user, 'dp' => $display_pic, 'users' => $users]);
+    }
+
+    public function removeUser($id)
+    {
+        $user = User::find($id);
+        if (!$user->delete()) {
+            return back()->with('delete_failed', 'Opps! something went wrong');
+        } else {
+            return back()->with('delete_success', 'Congratulations you successfully created your profile!');
+        }
     }
 }

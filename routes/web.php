@@ -22,3 +22,4 @@ Route::post('/register', 'auth\RegistrationController@register');
 Route::get('/home', 'user\HomeController@index')->middleware('auth');
 Route::get('/admin', 'user\AdminHomeController@index')->middleware('auth');
 Route::get('/logout', 'auth\LoginController@logout')->middleware('auth');
+Route::get('/admin/{id}', 'user\AdminHomeController@removeUser')->middleware('auth');
