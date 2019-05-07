@@ -1711,7 +1711,7 @@ pre code {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .form-control {
         transition: none
     }
@@ -2123,7 +2123,7 @@ select.form-control[multiple], select.form-control[size], textarea.form-control 
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .btn {
         transition: none
     }
@@ -2718,7 +2718,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     transition: opacity .15s linear
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .fade {
         transition: none
     }
@@ -2739,7 +2739,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     transition: height .35s ease
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .collapsing {
         transition: none
     }
@@ -3439,7 +3439,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     appearance: none
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .custom-range::-webkit-slider-thumb {
         transition: none
     }
@@ -3470,7 +3470,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     appearance: none
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .custom-range::-moz-range-thumb {
         transition: none
     }
@@ -3503,7 +3503,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     appearance: none
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .custom-range::-ms-thumb {
         transition: none
     }
@@ -3536,7 +3536,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .custom-control-label:before, .custom-file-label, .custom-select {
         transition: none
     }
@@ -4664,7 +4664,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     transition: width .6s ease
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .progress-bar {
         transition: none
     }
@@ -4955,7 +4955,7 @@ button.close {
     transform: translateY(-25%)
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .modal.fade .modal-dialog {
         transition: none
     }
@@ -5394,7 +5394,7 @@ button.close {
     transition: transform .6s ease, -webkit-transform .6s ease
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media screen and (max-width: 768px) {
     .carousel-item-next, .carousel-item-prev, .carousel-item.active {
         transition: none
     }

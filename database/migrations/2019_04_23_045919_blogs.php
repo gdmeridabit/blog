@@ -27,7 +27,7 @@ class Blogs extends Migration
             $table->boolean('is_enabled');
             $table->timestamp('updated_at');
             $table->timestamp('created_at');
-            $table->string('remember_token')->nullable();
+            $table->string('remember_token', 100)->nullable();
         });
     }
 

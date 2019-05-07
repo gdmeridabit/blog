@@ -1415,7 +1415,7 @@
     </column>
     <column id="334" parent="283" name="remember_token">
       <Position>14</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="335" parent="283" name="PRIMARY">
