@@ -10,6 +10,7 @@ use IPFSPHP\IPFS;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 
 class AdminHomeController extends Controller {
@@ -34,13 +35,38 @@ class AdminHomeController extends Controller {
         return view('adminHome',['user' => $user, 'dp' => $display_pic, 'users' => $users]);
     }
 
+    public function action($id, $action) {
+        if($action == 'remove') {
+            $this->removeUser($id);
+        } else {
+            $this->enableUser($id);
+        }
+        return back();
+    }
+
     public function removeUser($id)
     {
         $user = User::find($id);
         if (!$user->delete()) {
             return back()->with('delete_failed', 'Opps! something went wrong');
         } else {
-            return back()->with('delete_success', 'Congratulations you successfully created your profile!');
+            return back()->with('delete_success', 'Successfully deleted a profile!');
+        }
+    }
+
+    public function enableUser($id)
+    {
+        $user = User::find($id);
+        if($user->is_enabled == 1) {
+            $user->is_enabled = 0;
+        } else {
+            $user->is_enabled = 1;
+        }
+
+        if (!$user->save()) {
+            return back()->with('enable_failed', 'Opps! something went wrong');
+        } else {
+            return back()->with('enable_success', 'Successfully enable/disable a profile!');
         }
     }
 }

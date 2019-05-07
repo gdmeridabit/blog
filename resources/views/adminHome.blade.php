@@ -6,24 +6,38 @@
     <img src="{{ $dp }}" class="float-left profile" alt="" style="height:150px; max-width: 100%">
     <h1 class="mt-5 ml-3">{{ $user->first_name }} {{ $user->last_name }}</h1>
 </div>
-<div class="d-flex flex-row">
-    @if (session('delete_success'))
-    <div class="d-flex justify-content-center">
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ session('create_success') }} You can now <a href="/">login</a>.</strong>
-        </div>
+@if (session('delete_success'))
+<div class="d-flex justify-content-center">
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ session('delete_success') }}</strong>
     </div>
-    @endif
-    @if (session('delete_failed'))
-    <div class="d-flex justify-content-center">
-        <div class="alert alert-error alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>{{ session('create_failed') }}</strong>
-        </div>
-    </div>
-    @endif
 </div>
+@endif
+@if (session('delete_failed'))
+<div class="d-flex justify-content-center">
+    <div class="alert alert-error alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ session('delete_failed') }}</strong>
+    </div>
+</div>
+@endif
+@if (session('enable_success'))
+<div class="d-flex justify-content-center">
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ session('enable_success') }}</strong>
+    </div>
+</div>
+@endif
+@if (session('enable_failed'))
+<div class="d-flex justify-content-center">
+    <div class="alert alert-error alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ session('enable_failed') }}</strong>
+    </div>
+</div>
+@endif
 <div class="border border-primary mt-5">
     <div class="d-flex justify-content-center bg-primary">
         <h5 class="text-white my-2">Users List</h5>
@@ -48,11 +62,11 @@
                 <td>{{ $data->created_at }}</td>
                 <td>
                     <a href="" class="btn btn-outline-primary">Update</a>
-                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                    <a href="/admin/{{$data->id}}/remove" class="btn btn-outline-danger">Delete</a>
                     @if ($data->is_enabled)
-                    <a href="" class="btn btn-outline-success">Disable</a>
+                    <a href="/admin/{{$data->id}}/enable" class="btn btn-outline-success">Disable</a>
                     @else
-                    <a href="" class="btn btn-outline-secondary">Enable</a>
+                    <a href="/admin/{{$data->id}}/enable" class="btn btn-outline-secondary">Enable</a>
                     @endif
                 </td>
             </tr>
@@ -92,14 +106,14 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a id="delete-user-button" class="btn btn-primary">Delete</a>
+                <a href="/" id="delete-user-button" class="btn btn-primary">Delete</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    
+
 </script>
 
 @endsection

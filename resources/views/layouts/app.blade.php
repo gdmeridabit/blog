@@ -23,33 +23,41 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-    <!--        <ul class="navbar-nav mr-auto">-->
-    <!--            <li class="nav-item active">-->
-    <!--                <a class="nav-link" href="#">Left</a>-->
-    <!--            </li>-->
-    <!--        </ul>-->
-    <!--    </div>-->
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <!--        <ul class="navbar-nav mr-auto">-->
+        <!--            <li class="nav-item active">-->
+        <!--                <a class="nav-link" href="#">Left</a>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+        <!--    </div>-->
 
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <ul class="navbar-nav ml-auto">
-            @auth
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="/home"><i class="far fa-user mr-2"></i>Hello, {{ Auth::user()->first_name }}</a>
-            </li>
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="logout"><i class="fas fa-sign-out-alt"></i></a>
-            </li>
-            @else
-            <li class="nav-item mr-3">
-                <a class="nav-link" href="login"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-outline-primary" href="registration">Register</a>
-            </li>
-            @endif
-        </ul>
-    </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                @auth
+                @if(Auth::user()->is_admin)
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/admin"><i class="far fa-user mr-2"></i>Hello, {{ Auth::user()->first_name
+                        }}</a>
+                </li>
+                @else
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/home"><i class="far fa-user mr-2"></i>Hello, {{ Auth::user()->first_name
+                        }}</a>
+                </li>
+                @endif
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="logout"><i class="fas fa-sign-out-alt"></i></a>
+                </li>
+                @else
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="login"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary" href="registration">Register</a>
+                </li>
+                @endif
+            </ul>
+        </div>
 </nav>
 <div class="container">
     @yield('content')
