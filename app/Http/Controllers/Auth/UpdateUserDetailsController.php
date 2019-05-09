@@ -1,20 +1,19 @@
 <?php
 
+
 namespace App\Http\Controllers\Auth;
 
+
 use App\User;
-use DB;
-use App\Http\Controllers\Controller;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
-
-class RegistrationController extends Controller
+class UpdateUserDetailsController
 {
-
     /**
      * Landing Page.
      *
@@ -22,53 +21,58 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('auth/registration');
+        $user = Auth::user();
+        return view('auth/userUpdate',['user' => $user]);
     }
 
     /**
-     * Create a new user instance.
+     * Update a new user instance.
      *
      * @param Request $request
      * @return void
      */
-    public function register(Request $request)
+    public function update(Request $request)
     {
 
         $this->validateForm($request);
-
-        $user = new User;
-
+        $user = Auth::user();
         $name = '';
-        if ($files = $request->file('fileToUpload')) {
-            $name = $request->username . date("Ymdhis") . '.' . $files->getClientOriginalExtension();
-        }
-
-        Log::debug('check name: ' . $name);
 
         $user->username = $request->username;
-        $user->password = Hash::make($request->password, [
-            'rounds' => 12
-        ]);
+
+        if (isset($request->password) || !empty($request->password)) {
+            $user->password =  Hash::make($request->password, [
+                'rounds' => 12
+            ]);
+        }
+
         $user->first_name = $request->firstname;
         $user->last_name = $request->lastname;
         $user->email = $request->email;
         $user->is_admin = false;
         $user->is_enabled = true;
-        $user->display_picture = $name;
+
+        if ($files = $request->file('fileToUpload')) {
+            $name = $request->username . date("Ymdhis") . '.' . $files->getClientOriginalExtension();
+            $user->display_picture = $name;
+        }
+
         $user->description = $request->description;
-        $user->url = $request->username;
+        $user->url = $request->url;
 
         $result = $user->save();
 
         if (!$result) {
-            return back()->with('create_failed', 'Opps! something went wrong');
+            return back()->with('update_failed', 'Opps! something went wrong');
         } else {
-            Storage::disk('local')->putFileAs(
-                'public/files/',
-                $files,
-                $name
-            );
-            return back()->with('create_success', 'Congratulations you successfully created your profile!');
+            if ($request->file('fileToUpload')) {
+                Storage::disk('local')->putFileAs(
+                    'public/files/',
+                    $files,
+                    $name
+                );
+            }
+            return back()->with('update_success', 'Congratulations you successfully created your profile!');
         }
     }
 
@@ -83,9 +87,9 @@ class RegistrationController extends Controller
         $validatedData = $request->validate([
             'firstname' => 'required|max:50|alpha_num',
             'lastname' => 'required|max:50|alpha_num',
-            'username' => 'required|max:20|alpha_num',
-            'password' => 'required|max:20|min:8',
             'email' => 'required|email',
+            'url' => 'required|max:20',
+            'password' => 'nullable|max:20|min:8',
             'description' => 'nullable|max:160',
             'fileToUpload' => 'nullable|image|max:10000',
         ]);

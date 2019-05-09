@@ -2119,7 +2119,7 @@ select.form-control[multiple], select.form-control[size], textarea.form-control 
     padding: .375rem .75rem;
     font-size: .9rem;
     line-height: 1.6;
-    border-radius: .255rem;
+    border-radius: .25rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 

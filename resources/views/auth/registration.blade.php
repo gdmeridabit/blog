@@ -12,7 +12,7 @@
 <div class="d-flex justify-content-center">
     <div class="alert alert-success alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ session('create_success') }} You can now <a href="/">login</a>.</strong>
+        <strong>{{ session('create_success') }} You can now <a href="/login">login</a>.</strong>
     </div>
 </div>
 @endif

@@ -61,7 +61,6 @@
                 <td>{{ $data->username }}</td>
                 <td>{{ $data->created_at }}</td>
                 <td>
-                    <a href="" class="btn btn-outline-primary">Update</a>
                     <a href="/admin/{{$data->id}}/remove" class="btn btn-outline-danger">Delete</a>
                     @if ($data->is_enabled)
                     <a href="/admin/{{$data->id}}/enable" class="btn btn-outline-success">Disable</a>

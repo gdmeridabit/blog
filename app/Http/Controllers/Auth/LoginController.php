@@ -62,7 +62,7 @@ class LoginController extends Controller
         if ($user->is_admin) {
             return '/admin';
         } else {
-            return '/home';
+            return '/home/' . $user->url;
         }
     }
 
