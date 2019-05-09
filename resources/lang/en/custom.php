@@ -12,8 +12,8 @@ return [
     */
 
     'searchButton' => 'Search',
-    'searchUsername' => 'search username',
-    'searchEmail' => 'search email address',
-    'searchTitle' => 'search post title',
+    'searchUsername' => 'search by username',
+    'searchEmail' => 'search by email address',
+    'searchTitle' => 'search by post title',
     'emptyTable' => 'List is empty',
 ];
