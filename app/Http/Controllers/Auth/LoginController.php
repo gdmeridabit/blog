@@ -61,8 +61,9 @@ class LoginController extends Controller
         $user = Auth::user();
         if ($user->is_admin) {
             return '/admin';
+        } else {
+            return '/home/' . $user->url;
         }
-        return '/home';
     }
 
     /**

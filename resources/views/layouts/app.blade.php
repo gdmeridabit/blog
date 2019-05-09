@@ -22,20 +22,28 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 @auth
+                @if(Auth::user()->is_admin)
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="/home"><i class="far fa-user mr-2"></i>Hello, {{ Auth::user()->first_name
+                    <a class="nav-link" href="/admin"><i class="far fa-user mr-2"></i>Hello, {{ Auth::user()->first_name
                         }}</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="logout"><i class="fas fa-sign-out-alt"></i></a>
                 </li>
                 @else
                 <li class="nav-item mr-3">
-                    <a class="nav-link" href="login"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                    <a class="nav-link" href="/home/{{ Auth::user()->url }}"><i class="far fa-user mr-2"></i>Hello, {{ Auth::user()->first_name
+                        }}</a>
+                </li>
+                @endif
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+                </li>
+                @else
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-primary" href="registration">Register</a>
@@ -60,9 +68,5 @@
 
 </footer>
 <!-- Footer -->
-
-<!-- Scripts -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
