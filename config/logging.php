@@ -36,7 +36,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],
+            'channels' => ['syslog', 'single', 'daily'],
             'ignore_exceptions' => false,
         ],
 

@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Registration Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles users registration for the application
+    |
+    */
 
     /**
      * Create a new user instance.
